@@ -5,10 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class TransactionDomain {
-    private TransactionTypeDomain type;
     private String date;
     private Double value;
     private String cpf;
@@ -16,4 +14,5 @@ public class TransactionDomain {
     private String hour;
     private String onwnerStore;
     private String nameStore;
+    private TransactionTypeDomain type;
 }

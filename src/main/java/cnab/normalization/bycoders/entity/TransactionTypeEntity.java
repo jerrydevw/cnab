@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class TransactionTypeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column
     private String codigo;

@@ -1,12 +1,11 @@
 package cnab.normalization.bycoders.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class TransactionTypeDomain {
     private String code;
     private String description;
