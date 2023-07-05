@@ -24,11 +24,9 @@ public class SaveCnabTransactionsUseCaseImpl implements StoresCnabUseCase {
     @Override
     public void execute(List<TransactionDomain> transacoes) {
         try {
-            logger.info("INICIANDO ARMAZENAMENTO DO ARQUIVO");
             List<TransactionEntity> transactions = transacoes.stream().map(mapper::toEntity).toList();
 
             repository.saveAll(transactions);
-            logger.info("FIM ARMAZENAMENTO DO ARQUIVO");
         } catch (Exception e) {
             logger.error("ERRO AO ARMAZENAR O ARQUIVO", e);
             throw new SaveTransactionException("Erro ao armazenar o arquivo", e);

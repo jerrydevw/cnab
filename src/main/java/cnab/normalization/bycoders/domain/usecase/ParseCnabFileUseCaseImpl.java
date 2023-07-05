@@ -24,7 +24,6 @@ public class ParseCnabFileUseCaseImpl implements ParseCnabFileUseCase {
 
     @Override
     public List<TransactionDomain> execute(MultipartFile multipartFile) {
-        logger.info("INICIANDO PROCESSAMENTO DO ARQUIVO");
         List<TransactionDomain> transacoes = new ArrayList<>();
 
         HashMap<String, TransactionTypeDomain> types = TransactionTypeDomain.allTypes();
@@ -45,7 +44,6 @@ public class ParseCnabFileUseCaseImpl implements ParseCnabFileUseCase {
                     );
                     transacoes.add(transactionDomain);
                 }
-                logger.info("FIM PROCESSAMENTO DO ARQUIVO");
             }
         } catch (IOException e) {
             logger.error("ERRO AO PROCESSAR O ARQUIVO", e);
