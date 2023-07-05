@@ -25,17 +25,7 @@ public class StorageServiceImpl implements StorageService {
     public void store(MultipartFile multipartFile) {
         List<TransactionDomain> transacoes = new ArrayList<>();
 
-        HashMap<String, TransactionTypeDomain> types = new HashMap<>();
-
-        types.put("1", new TransactionTypeDomain("1", "Débito", "Entrada", "+"));
-        types.put("2",new TransactionTypeDomain("2", "Boleto", "Saída", "-"));
-        types.put("3", new TransactionTypeDomain("3", "Financiamento", "Saída", "-"));
-        types.put("4", new TransactionTypeDomain("4", "Crédito", "Entrada", "+"));
-        types.put("5", new TransactionTypeDomain("5", "Recebimento Empréstimo", "Entrada", "+"));
-        types.put("6", new TransactionTypeDomain("6", "Vendas", "Entrada", "+"));
-        types.put("7", new TransactionTypeDomain("7", "Recebimento TED", "Entrada", "+"));
-        types.put("8", new TransactionTypeDomain("8", "Recebimento DOC", "Entrada", "+"));
-        types.put("9", new TransactionTypeDomain("9", "Aluguel", "Saída", "-"));
+        HashMap<String, TransactionTypeDomain> types = TransactionTypeDomain.allTypes();
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(multipartFile.getInputStream()))) {
             String line;
@@ -49,7 +39,7 @@ public class StorageServiceImpl implements StorageService {
                     TransactionDomain.setCardNumber(line.substring(30, 42));
                     TransactionDomain.setHour(line.substring(42, 48));
                     TransactionDomain.setOnwnerStore(line.substring(48, 62));
-                    TransactionDomain.setNameStore(line.substring(62, line.length()));
+                    TransactionDomain.setNameStore(line.substring(62));
 
                     transacoes.add(TransactionDomain);
                 }
@@ -62,10 +52,6 @@ public class StorageServiceImpl implements StorageService {
 
         repository.saveAll(ok);
 
-        // Imprimir a lista de transações
-        for (TransactionDomain TransactionDomain : transacoes) {
-            System.out.println(TransactionDomain);
-        }
     
     }
 
