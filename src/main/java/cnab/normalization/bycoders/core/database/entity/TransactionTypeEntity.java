@@ -1,4 +1,4 @@
-package cnab.normalization.bycoders.entity;
+package cnab.normalization.bycoders.core.database.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

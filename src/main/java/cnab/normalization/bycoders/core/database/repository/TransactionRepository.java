@@ -1,6 +1,6 @@
-package cnab.normalization.bycoders.repository;
+package cnab.normalization.bycoders.core.database.repository;
 
-import cnab.normalization.bycoders.entity.TransactionEntity;
+import cnab.normalization.bycoders.core.database.entity.TransactionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TransactionRepository extends JpaRepository<TransactionEntity, Long> {

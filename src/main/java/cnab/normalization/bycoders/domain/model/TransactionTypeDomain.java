@@ -1,17 +1,13 @@
-package cnab.normalization.bycoders.domain;
-
-import lombok.*;
+package cnab.normalization.bycoders.domain.model;
 
 import java.util.HashMap;
 
-@Data
-@AllArgsConstructor
-public class TransactionTypeDomain {
-    private String code;
-    private String description;
-    private String nature;
-    private String signal;
-
+public record TransactionTypeDomain(
+        String code,
+        String description,
+        String nature,
+        String signal
+) {
     public static HashMap<String, TransactionTypeDomain> allTypes() {
         HashMap<String, TransactionTypeDomain> types = new HashMap<>();
 

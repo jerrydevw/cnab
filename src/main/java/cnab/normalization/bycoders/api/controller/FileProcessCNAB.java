@@ -1,6 +1,6 @@
-package cnab.normalization.bycoders.controller;
+package cnab.normalization.bycoders.api.controller;
 
-import cnab.normalization.bycoders.service.StorageService;
+import cnab.normalization.bycoders.domain.usecase.api.ProcessCnabUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +14,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class FileProcessCNAB {
 
-    private final StorageService storageService;
+    private final ProcessCnabUseCase processCnabUseCase;
     @PostMapping
     public void handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         // verify if file is null
         if (file.isEmpty()) {
             System.out.println("File is empty");
         } else {
-            storageService.store(file);
+            processCnabUseCase.execute(file);
         }
     }
 
