@@ -1,6 +1,7 @@
 package cnab.normalization.bycoders.domain.model;
 
-public record TransactionDomain(String date,
+public record TransactionDomain(Long id,
+                                String date,
                                 Double value,
                                 String cpf,
                                 String cardNumber,
