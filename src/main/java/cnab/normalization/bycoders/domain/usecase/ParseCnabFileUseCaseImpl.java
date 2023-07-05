@@ -38,8 +38,8 @@ public class ParseCnabFileUseCaseImpl implements ParseCnabFileUseCase {
                             line.substring(19, 30),
                             line.substring(30, 42),
                             line.substring(42, 48),
-                            line.substring(48, 62),
-                            line.substring(62),
+                            line.substring(48, 62).trim(),
+                            line.substring(62).trim(),
                             getTransactionType(line.substring(0, 1), types)
                     );
                     transacoes.add(transactionDomain);
