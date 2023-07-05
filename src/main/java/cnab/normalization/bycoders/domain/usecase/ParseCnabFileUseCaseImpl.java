@@ -1,5 +1,6 @@
 package cnab.normalization.bycoders.domain.usecase;
 
+import cnab.normalization.bycoders.domain.exception.ParseFileException;
 import cnab.normalization.bycoders.domain.model.TransactionDomain;
 import cnab.normalization.bycoders.domain.model.TransactionTypeDomain;
 import cnab.normalization.bycoders.domain.usecase.api.ParseCnabFileUseCase;
@@ -48,6 +49,7 @@ public class ParseCnabFileUseCaseImpl implements ParseCnabFileUseCase {
             }
         } catch (IOException e) {
             logger.error("ERRO AO PROCESSAR O ARQUIVO", e);
+            throw new ParseFileException("Erro ao processar o arquivo", e);
         }
 
         return transacoes;
