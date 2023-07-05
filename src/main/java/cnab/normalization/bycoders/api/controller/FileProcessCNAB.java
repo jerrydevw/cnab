@@ -13,16 +13,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/cnab")
 @RequiredArgsConstructor
 public class FileProcessCNAB {
-
     private final ProcessCnabUseCase processCnabUseCase;
     @PostMapping
     public void handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-        // verify if file is null
-        if (file.isEmpty()) {
-            System.out.println("File is empty");
-        } else {
-            processCnabUseCase.execute(file);
-        }
+        processCnabUseCase.execute(file);
     }
 
 }

@@ -1,10 +1,11 @@
 package cnab.normalization.bycoders.domain.usecase;
 
-import cnab.normalization.bycoders.domain.mapper.TransactionMapper;
 import cnab.normalization.bycoders.domain.model.TransactionDomain;
 import cnab.normalization.bycoders.domain.model.TransactionTypeDomain;
 import cnab.normalization.bycoders.domain.usecase.api.ParseCnabFileUseCase;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,13 +17,13 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ParseCnabFileUseCaseImpl implements ParseCnabFileUseCase {
+    Logger logger = LoggerFactory.getLogger(ParseCnabFileUseCaseImpl.class);
 
-    private final TransactionMapper mapper;
     @Override
     public List<TransactionDomain> execute(MultipartFile multipartFile) {
-        System.out.println("INICIANDO PROCESSAMENTO DO ARQUIVO");
+        logger.info("INICIANDO PROCESSAMENTO DO ARQUIVO");
         List<TransactionDomain> transacoes = new ArrayList<>();
 
         HashMap<String, TransactionTypeDomain> types = TransactionTypeDomain.allTypes();
@@ -43,10 +44,10 @@ public class ParseCnabFileUseCaseImpl implements ParseCnabFileUseCase {
                     );
                     transacoes.add(transactionDomain);
                 }
-                System.out.println("FIM PROCESSAMENTO DO ARQUIVO");
+                logger.info("FIM PROCESSAMENTO DO ARQUIVO");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("ERRO AO PROCESSAR O ARQUIVO", e);
         }
 
         return transacoes;

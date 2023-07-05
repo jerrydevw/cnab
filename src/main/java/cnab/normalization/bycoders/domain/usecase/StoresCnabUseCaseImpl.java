@@ -6,22 +6,27 @@ import cnab.normalization.bycoders.domain.mapper.TransactionMapper;
 import cnab.normalization.bycoders.domain.model.TransactionDomain;
 import cnab.normalization.bycoders.domain.usecase.api.StoresCnabUseCase;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class StoresCnabUseCaseImpl implements StoresCnabUseCase {
 
     private final TransactionMapper mapper;
     private final TransactionRepository repository;
+    Logger logger = LoggerFactory.getLogger(StoresCnabUseCaseImpl.class);
+
     @Override
     public void execute(List<TransactionDomain> transacoes) {
-        System.out.println("INICIANDO ARMAZENAMENTO DO ARQUIVO");
+        logger.info("INICIANDO ARMAZENAMENTO DO ARQUIVO");
         List<TransactionEntity> transactions = transacoes.stream().map(mapper::toEntity).toList();
 
         repository.saveAll(transactions);
-        System.out.println("FIM ARMAZENAMENTO DO ARQUIVO");
+        logger.info("FIM ARMAZENAMENTO DO ARQUIVO");
     }
 }
