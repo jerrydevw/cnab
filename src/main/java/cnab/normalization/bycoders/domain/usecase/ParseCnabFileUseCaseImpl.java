@@ -33,6 +33,7 @@ public class ParseCnabFileUseCaseImpl implements ParseCnabFileUseCase {
             while ((line = br.readLine()) != null) {
                 if (line.length() >= 80) {
                     TransactionDomain transactionDomain = new TransactionDomain(
+                            null,
                             line.substring(1, 9),
                             Double.parseDouble(line.substring(9, 19)) / 100.00,
                             line.substring(19, 30),
