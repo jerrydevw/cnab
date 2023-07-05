@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class TransactionEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "transaction_type_id", referencedColumnName = "id")
     private TransactionTypeEntity type;
 

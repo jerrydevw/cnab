@@ -21,7 +21,6 @@ create table transaction (
                                     foreign key (transaction_type_id) references transaction_type (id)
                                         match simple on update no action on delete no action
 );
-create unique index transaction_transaction_type_id_key on transaction using btree (transaction_type_id);
 
 ALTER TABLE transaction
     OWNER TO postgres;
