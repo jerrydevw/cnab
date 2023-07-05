@@ -16,17 +16,17 @@ public class TransactionTypeEntity {
     private Long id;
 
     @Column
-    private String codigo;
+    private String code;
 
     @Column
-    private String descricao;
+    private String description;
 
     @Column
-    private String natureza;
+    private String nature;
 
     @Column
-    private String sinal;
+    private String signal;
 
-    @OneToOne(mappedBy = "tipo", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "type", cascade = CascadeType.ALL)
     private TransactionEntity transaction;
 }

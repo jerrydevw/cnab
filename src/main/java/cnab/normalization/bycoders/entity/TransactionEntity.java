@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
 public class TransactionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,26 +19,26 @@ public class TransactionEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "transaction_type_id", referencedColumnName = "id")
-    private TransactionTypeEntity tipo;
+    private TransactionTypeEntity type;
 
     @Column
-    private String data;
+    private String date;
 
     @Column
-    private double valor;
+    private Double value;
 
     @Column
     private String cpf;
 
     @Column
-    private String cartao;
+    private String cardNumber;
 
     @Column
-    private String hora;
+    private String hour;
 
     @Column
-    private String donoLoja;
+    private String onwnerStore;
 
     @Column
-    private String nomeLoja;
+    private String nameStore;
 }

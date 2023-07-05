@@ -2,9 +2,8 @@ package cnab.normalization.bycoders.service;
 
 import cnab.normalization.bycoders.domain.TransactionDomain;
 import cnab.normalization.bycoders.domain.TransactionTypeDomain;
-import cnab.normalization.bycoders.entity.TransactionEntity;
-import cnab.normalization.bycoders.repository.TransactionRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import cnab.normalization.bycoders.mapper.TransactionMapper;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,12 +14,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class StorageServiceImpl implements StorageService {
 
-    private final TransactionRepository repository;
+    private final TransactionMapper mapper;
     @Override
     public void store(MultipartFile multipartFile) {
         List<TransactionDomain> transacoes = new ArrayList<>();
@@ -57,6 +57,8 @@ public class StorageServiceImpl implements StorageService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        var ok = transacoes.stream().map(mapper::toEntity).toList();
 
         // Imprimir a lista de transações
         for (TransactionDomain TransactionDomain : transacoes) {

@@ -2,10 +2,8 @@ package cnab.normalization.bycoders.domain;
 
 import lombok.*;
 
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 public class TransactionTypeDomain {
     private String code;
     private String description;
