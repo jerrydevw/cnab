@@ -16,8 +16,8 @@ public class TransactionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "transaction_type_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name="code", nullable=false)
     private TransactionTypeEntity type;
 
     @Column

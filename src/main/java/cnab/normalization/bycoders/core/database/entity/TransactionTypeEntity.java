@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "transaction_type")
 @AllArgsConstructor
@@ -27,6 +29,6 @@ public class TransactionTypeEntity {
     @Column
     private String signal;
 
-    @OneToOne(mappedBy = "type", cascade = CascadeType.ALL)
-    private TransactionEntity transaction;
+    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<TransactionEntity> transaction;
 }
