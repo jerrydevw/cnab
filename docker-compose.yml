@@ -1,12 +1,13 @@
 version: '3.7'
 services:
-#  web:
-#    build: .
-#    restart: always
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - postgres
+  web:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    network_mode: "host"
   postgres:
     image: postgres:10.5
     restart: always
@@ -19,7 +20,8 @@ services:
         max-size: 10m
         max-file: "3"
     ports:
-      - '5438:5432'
+      - '5432:5432'
     volumes:
       # copy the sql script to create tables
       - ./docker/database/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    network_mode: "host"
