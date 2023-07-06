@@ -17,8 +17,9 @@ public class FileProcessCNAB {
     private final ProcessCnabUseCase processCnabUseCase;
     private final FindTransactionsUseCase findTransactionsUseCase;
     @PostMapping
-    public void handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+    public ResponseEntity<Void> handleFileUpload(@RequestParam("file") MultipartFile file) {
         processCnabUseCase.execute(file);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping
