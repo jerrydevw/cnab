@@ -13,7 +13,6 @@ create table transaction (
                                     foreign key (code) references transaction_type (id)
                                         match simple on update no action on delete no action
 );
-create unique index transaction_name_store_key on transaction using btree (name_store);
 create index idx_transaction_namestore on transaction using btree (name_store);
 
 create table transaction_type (

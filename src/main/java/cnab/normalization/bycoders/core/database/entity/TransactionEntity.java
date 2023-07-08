@@ -40,6 +40,6 @@ public class TransactionEntity {
     @Column
     private String onwnerStore;
 
-    @Column(unique = true)
+    @Column
     private String nameStore;
 }
