@@ -22,6 +22,9 @@ public class FindTransactionsUseCaseImpl implements FindTransactionsUseCase {
     @Override
     public Page<TransactionDomain> execute(String storeName, Integer page, Integer size) {
         Pageable pageable = Pageable.ofSize(size).withPage(page);
+        if (storeName == null || storeName.isEmpty()) {
+            return repository.findAll(pageable).map(mapper::toDomain);
+        }
         return repository.findAllByNameStore(storeName, pageable).map(mapper::toDomain);
     }
 }
