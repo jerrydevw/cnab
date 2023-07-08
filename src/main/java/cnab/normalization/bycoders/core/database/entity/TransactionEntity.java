@@ -7,7 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "transaction")
+@Table(name = "transaction", indexes = {
+        @Index(name = "idx_transaction_nameStore", columnList = "nameStore"),
+})
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -38,6 +40,6 @@ public class TransactionEntity {
     @Column
     private String onwnerStore;
 
-    @Column
+    @Column(unique = true)
     private String nameStore;
 }

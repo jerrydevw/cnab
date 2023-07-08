@@ -1,33 +1,30 @@
 \c cnab;
 
-create table transaction_type
-(
-    id          bigserial
-        primary key,
-    code        varchar(255),
-    description varchar(255),
-    nature      varchar(255),
-    signal      varchar(255)
+create table transaction (
+                                    value double precision,
+                                    code bigint not null,
+                                    id bigint primary key not null default nextval('transaction_id_seq'::regclass),
+                                    card_number character varying(255),
+                                    cpf character varying(255),
+                                    date character varying(255),
+                                    hour character varying(255),
+                                    name_store character varying(255),
+                                    onwner_store character varying(255),
+                                    foreign key (code) references transaction_type (id)
+                                        match simple on update no action on delete no action
+);
+create unique index transaction_name_store_key on transaction using btree (name_store);
+create index idx_transaction_namestore on transaction using btree (name_store);
+
+create table transaction_type (
+                                         id bigint primary key not null default nextval('transaction_type_id_seq'::regclass),
+                                         code character varying(255),
+                                         description character varying(255),
+                                         nature character varying(255),
+                                         signal character varying(255)
 );
 
-alter table transaction_type
-    owner to postgres;
 
-create table transaction
-(
-    value        double precision,
-    code         bigint not null
-        constraint transaction_transaction_type_id_fk
-            references transaction_type,
-    id           bigserial
-        primary key,
-    card_number  varchar(255),
-    cpf          varchar(255),
-    date         varchar(255),
-    hour         varchar(255),
-    name_store   varchar(255),
-    onwner_store varchar(255)
-);
 
 alter table transaction
     owner to postgres;
