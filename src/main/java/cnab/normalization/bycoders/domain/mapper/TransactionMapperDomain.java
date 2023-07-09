@@ -6,7 +6,7 @@ import cnab.normalization.bycoders.domain.usecase.ProcessCnabUseCaseImpl;
 import org.mapstruct.Mapper;
 
 @Mapper(uses = ProcessCnabUseCaseImpl.class)
-public interface TransactionMapper {
+public interface TransactionMapperDomain {
 
     TransactionDomain toDomain(TransactionEntity entity);
 

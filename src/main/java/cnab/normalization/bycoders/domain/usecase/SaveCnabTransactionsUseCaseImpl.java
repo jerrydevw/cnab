@@ -3,7 +3,7 @@ package cnab.normalization.bycoders.domain.usecase;
 import cnab.normalization.bycoders.core.database.entity.TransactionEntity;
 import cnab.normalization.bycoders.core.database.repository.TransactionRepository;
 import cnab.normalization.bycoders.domain.exception.SaveTransactionException;
-import cnab.normalization.bycoders.domain.mapper.TransactionMapper;
+import cnab.normalization.bycoders.domain.mapper.TransactionMapperDomain;
 import cnab.normalization.bycoders.domain.model.TransactionDomain;
 import cnab.normalization.bycoders.domain.usecase.api.StoresCnabUseCase;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SaveCnabTransactionsUseCaseImpl implements StoresCnabUseCase {
 
-    private final TransactionMapper mapper;
+    private final TransactionMapperDomain mapper;
     private final TransactionRepository repository;
     Logger logger = LoggerFactory.getLogger(SaveCnabTransactionsUseCaseImpl.class);
 

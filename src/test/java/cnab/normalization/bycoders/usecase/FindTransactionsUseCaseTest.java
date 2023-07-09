@@ -3,9 +3,7 @@ package cnab.normalization.bycoders.usecase;
 import cnab.normalization.bycoders.core.database.entity.TransactionEntity;
 import cnab.normalization.bycoders.core.database.entity.TransactionTypeEntity;
 import cnab.normalization.bycoders.core.database.repository.TransactionRepository;
-import cnab.normalization.bycoders.domain.mapper.TransactionMapper;
-import cnab.normalization.bycoders.domain.model.TransactionDomain;
-import cnab.normalization.bycoders.domain.model.TransactionTypeDomain;
+import cnab.normalization.bycoders.domain.mapper.TransactionMapperDomain;
 import cnab.normalization.bycoders.domain.usecase.FindTransactionsUseCaseImpl;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
@@ -16,11 +14,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.test.context.ContextConfiguration;
 
 import java.util.List;
 
@@ -38,7 +33,7 @@ class FindTransactionsUseCaseTest {
 
 
     @Spy
-    private TransactionMapper mapper = Mappers.getMapper(TransactionMapper.class);
+    private TransactionMapperDomain mapper = Mappers.getMapper(TransactionMapperDomain.class);
 
     @Mock
     private TransactionRepository repository;
