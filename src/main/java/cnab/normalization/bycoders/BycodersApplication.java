@@ -14,7 +14,12 @@ public class BycodersApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/cnab").allowedOrigins("http://localhost:3000");
+				registry
+						.addMapping("/cnab")
+						.allowedOrigins("http://localhost:3000");
+				registry
+						.addMapping("/cnab/balance")
+						.allowedOrigins("http://localhost:3000");
 			}
 		};
 	}
