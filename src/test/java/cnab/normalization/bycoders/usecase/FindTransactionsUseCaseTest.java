@@ -45,7 +45,7 @@ class FindTransactionsUseCaseTest {
 
     @Test
     void shouldGetAndConvertTransactions() {
-        TransactionTypeEntity type = new TransactionTypeEntity(1L, "1", "Débito", "Entrada", "+", null);
+        TransactionTypeEntity type = new TransactionTypeEntity(1L, 1L, "Débito", "Entrada", "+", null);
         TransactionEntity transactionEntity = new TransactionEntity(
                 1L,
                 type,
