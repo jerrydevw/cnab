@@ -4,7 +4,7 @@ create table transaction_type
 (
     id          bigserial
         primary key,
-    code        varchar(255),
+    code        bigint not null,
     description varchar(255),
     nature      varchar(255),
     signal      varchar(255)
@@ -39,13 +39,13 @@ create index idx_transaction_namestore
 
 -- INSERT
 
-INSERT INTO transaction_type (code, description, nature, signal) VALUES ('1', 'Débito', 'Entrada', '+');
-INSERT INTO transaction_type (code, description, nature, signal) VALUES ('2', 'Boleto', 'Saída', '-');
-INSERT INTO transaction_type (code, description, nature, signal) VALUES ('3', 'Financiamento', 'Saída', '-');
-INSERT INTO transaction_type (code, description, nature, signal) VALUES ('4', 'Crédito', 'Entrada', '+');
-INSERT INTO transaction_type (code, description, nature, signal) VALUES ('5', 'Recebimento Empréstimo', 'Entrada', '+');
-INSERT INTO transaction_type (code, description, nature, signal) VALUES ('6', 'Vendas', 'Entrada', '+');
-INSERT INTO transaction_type (code, description, nature, signal) VALUES ('7', 'Recebimento TED', 'Entrada', '+');
-INSERT INTO transaction_type (code, description, nature, signal) VALUES ('8', 'Recebimento DOC', 'Entrada', '+');
-INSERT INTO transaction_type (code, description, nature, signal) VALUES ('9', 'Aluguel', 'Saída', '-');
+INSERT INTO transaction_type (code, description, nature, signal) VALUES (1, 'Débito', 'Entrada', '+');
+INSERT INTO transaction_type (code, description, nature, signal) VALUES (2, 'Boleto', 'Saída', '-');
+INSERT INTO transaction_type (code, description, nature, signal) VALUES (3, 'Financiamento', 'Saída', '-');
+INSERT INTO transaction_type (code, description, nature, signal) VALUES (4, 'Crédito', 'Entrada', '+');
+INSERT INTO transaction_type (code, description, nature, signal) VALUES (5, 'Recebimento Empréstimo', 'Entrada', '+');
+INSERT INTO transaction_type (code, description, nature, signal) VALUES (6, 'Vendas', 'Entrada', '+');
+INSERT INTO transaction_type (code, description, nature, signal) VALUES (7, 'Recebimento TED', 'Entrada', '+');
+INSERT INTO transaction_type (code, description, nature, signal) VALUES (8, 'Recebimento DOC', 'Entrada', '+');
+INSERT INTO transaction_type (code, description, nature, signal) VALUES (9, 'Aluguel', 'Saída', '-');
 

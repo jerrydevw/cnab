@@ -18,7 +18,7 @@ public class TransactionTypeEntity {
     private Long id;
 
     @Column
-    private String code;
+    private Long code;
 
     @Column
     private String description;
