@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 
 import TableCnab from './component/table';
 import PaginationCustom from './component/pagination';
@@ -35,6 +36,8 @@ export default function Home() {
 
   const [balance, setBalance] = useState(null);
 
+  const [uploadStatus, setUploadStatus] = useState(false);
+
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
@@ -60,14 +63,13 @@ export default function Home() {
     UploadFile(formData)
     .then(() => {
       setTimeout(() => {
-        console.log("get data in timeout");
-        if (cnabs == null || cnabs.empty) {
           getCnabs(page, size, storeName)
             .then((cnabsResult) => {
               setCnabs(cnabsResult);
-            })
-          }
+            }) 
       }, 500);
+
+      setUploadStatus(true);
 
     })
 
@@ -88,6 +90,13 @@ export default function Home() {
 
     return await GetCnabsBalance(params);
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUploadStatus(false);
+    }, 2000);
+
+  }, [uploadStatus])
 
   useEffect(() => {
     if (cnabs == null) {
@@ -151,6 +160,12 @@ export default function Home() {
                 <p className="text-center">Saidas: {FormateCurrency(balance.totalExit)}</p>
                 <p className="text-center">Saldo: {FormateCurrency(balance.finalValue)}</p>
               </Col> : null }
+
+            {uploadStatus ? <Col>
+              <Alert key='success-upload' variant='success' dismissible>
+                  Upload realizado com sucesso!
+                </Alert>
+              </Col>: null}  
           </Row>
         </Col>
       </Row>
