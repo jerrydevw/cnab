@@ -1,6 +1,14 @@
 version: '3.7'
 services:
-  web:
+  frontend:
+    build: ./cnab-front
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    network_mode: "host"
+  api:
     build: .
     restart: always
     ports:
