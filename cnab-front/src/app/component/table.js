@@ -2,11 +2,12 @@ import Table from 'react-bootstrap/Table';
 import FormateCurrency from '../util/formatecurrency';
 import FormateTime from '../util/formatetime';
 
-function TableCnab(cnabsPaginated) {
+function TableCnab({cnabsPaginated}) {
     const tableHeaders = [
         "Data", "Cpf", "Numero do cartao", "Hora", "Dono da loja",  "Nome da loja", "Valor", "Tipo", "Natureza"
     ]
 
+    console.log(cnabsPaginated);
 
     return (
         <Table striped bordered hover>
@@ -22,7 +23,7 @@ function TableCnab(cnabsPaginated) {
 
             <tbody>
 
-                {cnabsPaginated.cnabsPaginated?.content.map((cnab, index) => (
+                {cnabsPaginated?.content.map((cnab, index) => (
                     <tr key={index}>
                         <td>{index+1}</td>
                         <td>{cnab.date}</td>
