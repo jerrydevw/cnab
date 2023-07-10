@@ -1,6 +1,7 @@
 Considere a branch main
 
 ## Pre requisitos:
+ - maven
  - docker
  - docker compose
 
