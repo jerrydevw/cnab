@@ -1,11 +1,9 @@
-FROM openjdk:17-alpine
-MAINTAINER jerry.dev
+FROM maven:3-openjdk-17
 
-COPY mvnw .
-COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
-RUN ./mvnw clean package
+RUN mvn clean package
+
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","target/bycoders-0.0.1-SNAPSHOT.jar"]
