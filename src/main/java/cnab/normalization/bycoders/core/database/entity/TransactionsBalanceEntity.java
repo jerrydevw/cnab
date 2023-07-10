@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
                         "SUM(CASE WHEN tt.signal = '+' THEN t.value ELSE -t.value END) AS finalValue " +
                         "FROM transaction t " +
                         "JOIN transaction_type tt ON t.code = tt.code " +
-                        "WHERE t.name_store = 'MERCADO DA AVENIDA'",
+                        "WHERE t.name_store = :nameStore",
         resultSetMapping = "balance_by_store"
 )
 @SqlResultSetMapping(
