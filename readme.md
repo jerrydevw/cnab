@@ -1,4 +1,4 @@
-Considere a branch master
+Considere a branch main
 
 ## Pre requisitos:
  - docker
