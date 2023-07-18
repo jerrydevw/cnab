@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NamedNativeQuery(
         name = "transactions_balance_by_store",
         query =
-                "SELECT SUM(CASE WHEN tt.signal = '+' THEN t.value ELSE 0 END) AS totalEntrance, " +
-                        "SUM(CASE WHEN tt.signal = '-' THEN t.value ELSE 0 END) AS totalExit, " +
-                        "SUM(CASE WHEN tt.signal = '+' THEN t.value ELSE -t.value END) AS finalValue " +
-                        "FROM transaction t " +
-                        "JOIN transaction_type tt ON t.code = tt.code " +
+                "SELECT SUM(CASE WHEN tt.signal = '+' THEN t.value_cnab ELSE 0 END) AS totalEntrance, " +
+                        "SUM(CASE WHEN tt.signal = '-' THEN t.value_cnab ELSE 0 END) AS totalExit, " +
+                        "SUM(CASE WHEN tt.signal = '+' THEN t.value_cnab ELSE -t.value_cnab END) AS finalValue " +
+                        "FROM transaction_cnab t " +
+                        "JOIN transaction_type_cnab tt ON t.code = tt.code " +
                         "WHERE t.name_store = :nameStore",
         resultSetMapping = "balance_by_store"
 )

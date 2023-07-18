@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "transaction")
+@Table(name = "transaction_cnab")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -23,7 +23,7 @@ public class TransactionEntity {
     @Column
     private String date;
 
-    @Column
+    @Column(name = "value_cnab")
     private Double value;
 
     @Column
@@ -32,7 +32,7 @@ public class TransactionEntity {
     @Column
     private String cardNumber;
 
-    @Column
+    @Column(name = "hour_cnab")
     private String hour;
 
     @Column
