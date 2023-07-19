@@ -1,21 +1,21 @@
 version: '3.7'
 services:
-  frontend:
-    build: ./cnab-front
-    restart: always
-    ports:
-      - "3000:3000"
-    depends_on:
-      - api
-    network_mode: "host"
-  api:
-    build: .
-    restart: always
-    ports:
-      - "8080:8080"
-    depends_on:
-      - postgres
-    network_mode: "host"
+#  frontend:
+#    build: ./cnab-front
+#    restart: always
+#    ports:
+#      - "3000:3000"
+#    depends_on:
+#      - api
+#    network_mode: "host"
+#  api:
+#    build: .
+#    restart: always
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - postgres
+#    network_mode: "host"
   postgres:
     image: postgres:10.5
     restart: always
