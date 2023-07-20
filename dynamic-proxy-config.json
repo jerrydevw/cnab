@@ -1,0 +1,10 @@
+[
+  { "interfaces":  ["cnab.normalization.bycoders.core.database.repository.TransactionRepository"]},
+  { "interfaces": [ "interface org.hibernate.query.sql.spi.NativeQueryImplementor",
+                    "interface org.hibernate.query.spi.DomainQueryExecutionContext",
+                    "interface org.hibernate.query.internal.ResultSetMappingResolutionContext",
+                    "interface org.hibernate.query.spi.QueryImplementor",
+                    "interface org.hibernate.query.SelectionQuery",
+                    "interface org.hibernate.query.CommonQueryContract"
+                  ] }
+]
